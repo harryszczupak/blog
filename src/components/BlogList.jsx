@@ -1,6 +1,13 @@
 import BlogItem from './BlogItem';
 import classes from './BlogList.module.css';
 const BlogList = ({ data }) => {
+	if (!Array.isArray(data) || data.length === 0) {
+		return (
+			<section>
+				<h1>Nie znaleziono żadnych wpisów</h1>
+			</section>
+		);
+	}
 	return (
 		<ul className={classes.list}>
 			<section>
@@ -13,6 +20,7 @@ const BlogList = ({ data }) => {
 					blog.
 				</p>
 			</section>
+
 			{data.map((item) => {
 				return <BlogItem key={item.id} items={item} />;
 			})}
